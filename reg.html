@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h2>New User Registration</h2>
+    Name: <input type="text" id="reg-name" placeholder="Name"><br><br>
+    Email: <input type="email" id="reg-email" placeholder="Email"><br><br>
+    Password: <input type="password" id="reg-password" placeholder="Password"><br><br>
+    Confirm Password: <input type="password" id="reg-confirm-password" placeholder="Confirm Password"><br><br>
+    <button onclick="register()">Register</button>
+    <p>Already have an account? <a href="index.html">Login here</a></p>
+
+    <script>
+        function register() {
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            const user = { name, email, password };
+            localStorage.setItem(name, JSON.stringify(user));
+            alert('Registration successful!');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
