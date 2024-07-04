@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Details</title>
+</head>
+<body>
+    <h2>Your Details</h2>
+    <p id="user-details"></p>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        function displayDetails() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (loggedInUser) {
+                const user = JSON.parse(loggedInUser);
+                document.getElementById('user-details').innerText = `Name: ${user.name}, Email: ${user.email}`;
+            } else {
+                alert('No user logged in.');
+                window.location.href = 'index.html';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('loggedInUser');
+            window.location.href = 'index.html';
+        }
+
+        window.onload = displayDetails;
+    </script>
+</body>
+</html>
